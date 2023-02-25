@@ -1,0 +1,8 @@
+﻿@model Community.Models.News
+
+    <div class=" box-shadow">
+        <h1> @Html.DisplayFor(model => model.Title)</h1>
+        <h6 align="Center">@Html.DisplayFor(model => model.ReleaseTime)</h6>
+        <hr width="95%">
+        <p> @Html.DisplayFor(model => model.Content)</p>
+    </div>

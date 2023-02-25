@@ -1,0 +1,37 @@
+﻿@using Microsoft.AspNetCore.Identity;
+@model IEnumerable<ApplicationUser>
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">用户名</th>
+            <th scope="col">姓名</th>
+            <th scope="col">电话号码</th>
+            <th scope="col">家庭住址</th>
+            <th scope="col">操作</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var u in Model)
+        {
+        <tr>
+            <td scope="row">@u.Id</td>
+            <td> @u.UserName</td>
+            <td>@u.Name</td>
+            <td>@u.PhoneNumber</td>
+            <td>@u.Address</td>
+            <td>
+
+                <form asp-action="DeleteUser" method="post" asp-route-id="@u.Id">
+                    <a asp-action="EditUser" asp-route-id="@u.Id" class="btn btn-primary">编辑</a>
+                    <button type="submit" class="btn btn-danger " onclick="return confirm('确认删除？')">删除</button>
+                </form>
+            </td>
+        </tr>
+        }
+
+    </tbody>
+</table>
+<a   asp-action="AddUser" class="btn btn-danger " >添加用户</a>

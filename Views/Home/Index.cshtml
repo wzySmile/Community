@@ -1,0 +1,30 @@
+﻿@using Community.Models
+@model IEnumerable<News>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">欢迎</h1>
+</div>
+@if (User.IsInRole("Admin")||User.IsInRole("User"))
+{
+<table class="table">
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <a asp-action="ViewNews" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Title)</a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReleaseTime)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+}
+
+
+

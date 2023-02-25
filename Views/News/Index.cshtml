@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Community.Models.News>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>公告列表</h1>
+
+<p>
+    <a asp-action="Create">创建公告</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReleaseTime)
+            </th>
+            <th>操作</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReleaseTime)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">修改</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">详情</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">删除</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
